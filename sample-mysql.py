@@ -3,7 +3,7 @@ import pymysql
 
 def updating_data(list_data):
    try:
-    dbconnect = pymysql.connect('zlp18589.vci.att.com', 'techm', 'Techm123@', 'tcoe_support_tools_dev')
+    dbconnect = pymysql.connect('hostname', 'username', 'paswd', 'schemaname')
     cursor = dbconnect.cursor()
     cursor.execute('select max(id) from t_data_master')
     r = cursor.fetchone()
@@ -44,7 +44,7 @@ def updating_data(list_data):
     dbconnect.close()
 
 def last_update():
-    dbconnect = pymysql.connect('zlp18589.vci.att.com', 'techm', 'Techm123@', 'tcoe_support_tools_dev')
+    dbconnect = pymysql.connect('hostname', 'username', 'paswd', 'schemaname')
     cursor = dbconnect.cursor()
     d=cursor.execute('select DATE_FORMAT(last_updated_date,\'%Y-%m-%d\') from metrics_run_count where DATE_FORMAT(last_updated_date,\'%Y-%m-%d\')=DATE_FORMAT(now(),\'%Y-%m-%d\')')
     cursor.close()
